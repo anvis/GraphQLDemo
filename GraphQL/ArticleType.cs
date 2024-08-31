@@ -2,9 +2,9 @@
 
 namespace GraphQLAPIDemo.GraphQL
 {
-    public class ArticleGraphQLType : ObjectGraphType<PostDTO>
+    public class ArticleType : ObjectGraphType<PostDTO>
     {
-        public ArticleGraphQLType()
+        public ArticleType()
         {
             Field(x => x.PostId).Description("Postid");
             Field(x => x.Title).Description("Title");

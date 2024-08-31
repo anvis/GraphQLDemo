@@ -40,14 +40,14 @@ builder.Services.AddSingleton<IArticleRepository, ArticleRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<ArticleGraphQLQuery>();
-builder.Services.AddSingleton<ArticleGraphQLType>();
-builder.Services.AddSingleton<ArticleGraphQLSchema>();
-builder.Services.AddSingleton<ISchema ,ArticleGraphQLSchema>();
+builder.Services.AddSingleton<ArticleQuery>();
+builder.Services.AddSingleton<ArticleType>();
+builder.Services.AddSingleton<ArticleSchema>();
+builder.Services.AddSingleton<ISchema ,ArticleSchema>();
 
 builder.Services.AddGraphQL(builder => builder
     .AddSystemTextJson()
-    .AddAutoSchema<ArticleGraphQLSchema>());
+    .AddAutoSchema<ArticleSchema>());
 
 var app = builder.Build();
 

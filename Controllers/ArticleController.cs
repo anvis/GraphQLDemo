@@ -17,6 +17,7 @@ namespace GraphQLAPIDemo.Controllers
         [HttpGet(Name = "GetArticles")]
         public  List<PostDTO> Get()
         {
+            
             return  _ArticleRepository.GetArticles();
         }
     }

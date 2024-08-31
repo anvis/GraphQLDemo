@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace GraphQLAPIDemo
 {
@@ -54,10 +55,25 @@ namespace GraphQLAPIDemo
             return postDTO;
         }
 
-        //public Task UpdatePost(Post post)
-        //{
+        public async  Task<List<User>> GetUsers()
+        {
+            List<User> users = new List<User>();
+            HttpClient httpClient = new HttpClient();
+            Uri uri = new Uri("https://jsonplaceholder.typicode.com/todos");
+            HttpResponseMessage response = await httpClient.GetAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                dynamic result = await response.Content.ReadAsStringAsync();
+                users = JsonConvert.DeserializeObject<List<User>>(result);
+            }
 
-        //    throw new System.NotImplementedException();
-        //}
+            return users;
+        }
+
+            //public Task UpdatePost(Post post)
+            //{
+
+            //    throw new System.NotImplementedException();
+            //}
+        }
     }
-}
