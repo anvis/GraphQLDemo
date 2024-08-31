@@ -23,7 +23,7 @@ namespace GraphQLAPIDemo
             _blogDBContext.SaveChanges();
 
 
-            _blogDBContext.Posts.Add(post);
+            _blogDBContext.Articles.Add(post);
             _blogDBContext.SaveChanges();
         }
 
@@ -35,7 +35,7 @@ namespace GraphQLAPIDemo
 
         public List<PostDTO> GetArticles()
         {
-            var posts = _blogDBContext.Posts.Include(x => x.Category).ToList();
+            var posts = _blogDBContext.Articles.Include(x => x.Category).ToList();
             List<PostDTO> postDTO = new List<PostDTO>();
 
             foreach (var post in posts)

@@ -14,7 +14,7 @@ namespace GraphQLAPIDemo
         }
 
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<Post> Articles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -46,9 +46,9 @@ namespace GraphQLAPIDemo
 
             modelBuilder.Entity<Post>(entity =>
             {
-                entity.ToTable("Post");
+                entity.ToTable("Article");
 
-                entity.Property(e => e.PostId).HasColumnName("POST_ID");
+                entity.Property(e => e.PostId).HasColumnName("Article_ID"); ;
 
                 entity.Property(e => e.CategoryId).HasColumnName("CATEGORY_ID");
 
@@ -68,7 +68,7 @@ namespace GraphQLAPIDemo
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Posts)
                     .HasForeignKey(d => d.CategoryId)
-                    .HasConstraintName("FK__Post__CATEGORY_I__267ABA7A");
+                    .HasConstraintName("FK__Article__CATEGOR__6FE99F9F");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -6,7 +6,7 @@ namespace GraphQLAPIDemo.GraphQL
     {
         public ArticleType()
         {
-            Field(x => x.PostId).Description("Postid");
+            Field(x => x.PostId).Description("PostId");
             Field(x => x.Title).Description("Title");
             Field(x => x.Description).Description("Description");
             Field(x => x.CreatedDate).Description("CreatedDate");
