@@ -41,3 +41,64 @@ Important
 builder.Services.AddSingleton<ISchema ,ArticleGraphQLSchema>();
 
 app.UseGraphQL<ISchema>();
+
+
+
+Our Queries
+
+{
+  articles 
+  {
+    title,
+    createdDate
+  }
+  articlesById(article_Id : 2)
+  {
+    title
+  }
+}
+
+------------
+
+
+{
+  articles 
+  {
+    title,
+    createdDate
+  }
+  articlesById(article_Id : 2)
+  {
+    title
+  }
+  users
+  {
+    title
+  }
+}
+
+-------------------
+
+{
+  articles 
+  {
+    title,
+    createdDate
+     }
+  articlesById(article_Id : 2)
+  {
+    title,
+    category {
+      id
+    }
+  }
+  users
+  {
+    title
+  }
+}
+
+---------------------------
+
+
+

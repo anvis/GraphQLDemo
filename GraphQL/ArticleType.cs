@@ -10,12 +10,7 @@ namespace GraphQLAPIDemo.GraphQL
             Field(x => x.Title).Description("Title");
             Field(x => x.Description).Description("Description");
             Field(x => x.CreatedDate).Description("CreatedDate");
-
-            //Field<ListGraphType<ParticipantType>>(
-            //    "participants",
-            //    arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "postId" }),
-            //    resolve: context => repository.GetParticipantInfoByEventId(context.Source.PostId)
-            //);
+            Field<CategoryDTOType>("Category").Description("Gets Category");
         }
     }
 }
