@@ -5,6 +5,7 @@ using GraphQL;
 using GraphQLAPIDemo.GraphQL;
 using GraphiQl;
 using GraphQL.Types;
+using GraphQLAPIDemo.GraphQL.Mutations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ArticleQuery>();
 builder.Services.AddSingleton<ArticleType>();
 builder.Services.AddSingleton<ArticleSchema>();
+builder.Services.AddSingleton<CategotyMutation>();
+builder.Services.AddSingleton<CategoryType>();
 builder.Services.AddSingleton<ISchema ,ArticleSchema>();
 
 builder.Services.AddGraphQL(builder => builder

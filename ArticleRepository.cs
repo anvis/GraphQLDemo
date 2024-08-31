@@ -70,6 +70,18 @@ namespace GraphQLAPIDemo
             return users;
         }
 
+
+        public Category AddCategory(Category category)
+        {
+            // category = new Category();
+            _blogDBContext.Categories.Add(category);
+
+            _blogDBContext.SaveChanges();   
+
+            return category;
+
+        }
+
             //public Task UpdatePost(Post post)
             //{
 

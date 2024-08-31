@@ -101,4 +101,15 @@ Our Queries
 ---------------------------
 
 
+mutation ($category : CategoryInput)
+{
+  createCategory (category: $category)
+  {
+    id,
+    name
+  }
+}
 
+{
+  "category": {"name": "Java"}
+}

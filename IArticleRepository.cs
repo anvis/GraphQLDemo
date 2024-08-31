@@ -10,6 +10,8 @@
 
         void AddPost(Post post, Category category);
 
-      //  Task UpdatePost(Post post);
+        Category AddCategory( Category category);
+
+        //  Task UpdatePost(Post post);
     }
 }
