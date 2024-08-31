@@ -13,7 +13,7 @@ and add
 app.UseGraphiQl("/graphql");
 
 builder.Services.AddSingleton<ArticleGraphQLQuery>();
-builder.Services.AddSingleton<PosttGraphQLType>();
+builder.Services.AddSingleton<ArticletGraphQLType>();
 builder.Services.AddSingleton<ArticleGraphQLSchema>();
 
 builder.Services.AddGraphQL(builder => builder

@@ -15,7 +15,7 @@ namespace GraphQLAPIDemo
             _blogDBContext = blogDBContext;
         }
 
-        public void AddPost(Post post, Category category)
+        public void AddArticle(Article Article, Category category)
         {
             // category = new Category();
             _blogDBContext.Categories.Add(category);
@@ -23,7 +23,7 @@ namespace GraphQLAPIDemo
             _blogDBContext.SaveChanges();
 
 
-            _blogDBContext.Articles.Add(post);
+            _blogDBContext.Articles.Add(Article);
             _blogDBContext.SaveChanges();
         }
 
@@ -33,26 +33,26 @@ namespace GraphQLAPIDemo
         }
 
 
-        public List<PostDTO> GetArticles()
+        public List<ArticleDTO> GetArticles()
         {
-            var posts = _blogDBContext.Articles.Include(x => x.Category).ToList();
-            List<PostDTO> postDTO = new List<PostDTO>();
+            var Articles = _blogDBContext.Articles.Include(x => x.Category).ToList();
+            List<ArticleDTO> ArticleDTO = new();
 
-            foreach (var post in posts)
+            foreach (var Article in Articles)
             {
-                postDTO.Add(new PostDTO()
+                ArticleDTO.Add(new ArticleDTO()
                 {
-                    PostId = post.PostId,
-                    Category = new CategoryDTO { Id = post.Category.Id, Name = post.Category.Name },
-                    CategoryId = post.Category.Id,
-                    CreatedDate = post.CreatedDate,
-                    Description = post.Description,
-                    Title = post.Title
+                    ArticleId = Article.ArticleId,
+                    Category = new CategoryDTO { Id = Article.Category.Id, Name = Article.Category.Name },
+                    CategoryId = Article.Category.Id,
+                    CreatedDate = Article.CreatedDate,
+                    Description = Article.Description,
+                    Title = Article.Title
 
                 });
             }
 
-            return postDTO;
+            return ArticleDTO;
         }
 
         public async  Task<List<User>> GetUsers()
@@ -82,7 +82,7 @@ namespace GraphQLAPIDemo
 
         }
 
-            //public Task UpdatePost(Post post)
+            //public Task UpdateArticle(Article Article)
             //{
 
             //    throw new System.NotImplementedException();

@@ -4,14 +4,14 @@
     {
         Task<List<Category>> GetCategories();
 
-        List<PostDTO> GetArticles();
+        List<ArticleDTO> GetArticles();
 
         Task<List<User>> GetUsers();
 
-        void AddPost(Post post, Category category);
+        void AddArticle(Article Article, Category category);
 
         Category AddCategory( Category category);
 
-        //  Task UpdatePost(Post post);
+        //  Task UpdateArticle(Article Article);
     }
 }

@@ -7,15 +7,15 @@ namespace GraphQLAPIDemo.GraphQL
     {
         public ArticleQuery(IArticleRepository ArticleRepository)
         {
-            Name = "PostGrapghQLQuery";
+            Name = "ArticleGrapghQLQuery";
 
             Field<ListGraphType<ArticleType>>(
                 "articles").Description("Gets all Articles from Database").Resolve( context => ArticleRepository.GetArticles()
             );
 
             Field<ListGraphType<ArticleType>>(
-                "staticposts").Resolve(context => new List<PostDTO>
-                { new PostDTO {PostId = 1, CategoryId = 2, Title = "abc", Description = "Desciption"}}
+                "staticArticles").Resolve(context => new List<ArticleDTO>
+                { new ArticleDTO {ArticleId = 1, CategoryId = 2, Title = "abc", Description = "Desciption"}}
             );
 
             Field<ListGraphType<UserType>>("Users").Resolve(context => ArticleRepository.GetUsers().Result);
@@ -28,14 +28,13 @@ namespace GraphQLAPIDemo.GraphQL
                     var articles = ArticleRepository.GetArticles();
                     if (filter > 0)
                     {
-                        articles = articles.Where(x => x.PostId == filter).ToList();
+                        articles = articles.Where(x => x.ArticleId == filter).ToList();
                     }
                     return articles;
 
                 }
                 )
                 .Arguments(new QueryArguments(new QueryArgument<IntGraphType> { Name = "article_Id", Description = "articles by article_Id" }));
-
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace GraphQLAPIDemo
 {
-    public partial class Post
+    public partial class Article
     {
-        public int PostId { get; set; }
+        public int ArticleId { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
         public int? CategoryId { get; set; }
