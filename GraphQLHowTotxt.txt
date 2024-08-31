@@ -1,0 +1,43 @@
+﻿Install NUget packages
+GraphQL
+GraphQL.Server.Transports.AspNetCore
+graphiql (for UI-Playground)
+
+
+create 
+type
+query
+schema
+
+and add 
+app.UseGraphiQl("/graphql");
+
+builder.Services.AddSingleton<ArticleGraphQLQuery>();
+builder.Services.AddSingleton<PosttGraphQLType>();
+builder.Services.AddSingleton<ArticleGraphQLSchema>();
+
+builder.Services.AddGraphQL(builder => builder
+    .AddSystemTextJson()
+    .AddSchema<ArticleGraphQLSchema>());
+
+in startup
+
+
+Update DB Context to singleton
+
+//builder.Services.AddDbContext<BlogDBContext>(item => item.UseSqlServer
+//                               ("Server=ANVIRYZEN\\SQLEXPRESS;Database=BlogDB;Trusted_Connection=True;"));
+
+builder.Services.AddSingleton<BlogDBContext>(provider =>
+{
+    var optionsBuilder = new DbContextOptionsBuilder<BlogDBContext>();
+    optionsBuilder.UseSqlServer("Server=ANVIRYZEN\\SQLEXPRESS;Database=BlogDB;Trusted_Connection=True;");
+    return new BlogDBContext(optionsBuilder.Options);
+});
+
+
+Important
+
+builder.Services.AddSingleton<ISchema ,ArticleGraphQLSchema>();
+
+app.UseGraphQL<ISchema>();
